@@ -13,14 +13,14 @@ app = Flask(__name__)
 
 app.config['DEBUG'] = True
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgres://rngotahesvcgto:8640748444902ea6820361d616c8c81895628c3ba2f0ac481a9fdba056fe1ae2@ec2-54-247-85-251.eu-west-1.compute.amazonaws.com:5432/d6fcon6d6kee1lb')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'jose'
 api = Api(app)
 
 jwt = JWT(app, authenticate, identity)  # /auth
 
-@app.route('/hello')
+@app.route('/hello', method=GET)
 def hello(self):
     return 'Hello world REST API'
 
